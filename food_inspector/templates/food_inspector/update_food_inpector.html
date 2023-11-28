@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>FOOD SAFETY</title>
+<!--
+
+TemplateMo 558 Klassy Cafe
+
+https://templatemo.com/tm-558-klassy-cafe
+
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="/static/assets/css/templatemo-klassy-cafe.css">
+
+    <link rel="stylesheet" href="/static/assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="/static/assets/css/lightbox.css">
+
+    </head>
+
+    <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="/login/department_home/#menu" class="active">BACK</a></li>
+{#                            <li class="scroll-to-section"><a href="#about">About</a></li>#}
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <section class="section" id="chefs">
+        <div class="container">
+
+             <div class="col-lg-10">
+                    <div class="contact-form">
+                        <form enctype="multipart/form-data" method="post">
+                            {% csrf_token %}
+                          <div class="row">
+                            <div class="col-lg-12">
+                                <h4>UPDATE FOOD INSPECTOR DETAILS</h4>
+                                <br>
+                            </div>
+                          {% for i in data %}
+                            <div class="col-lg-12 col-sm-12">
+                              <fieldset>
+                                <input name="name" type="text" pattern="[A-Za-z\s'-]+$" id="name" autocomplete="off" value="{{ i.name }}" placeholder="Enter Name*" required="">
+                              </fieldset>
+                            </div>
+                              <div class="col-lg-12 col-sm-12">
+                              <fieldset>
+                              <input name="age" type="number" id="age" autocomplete="off" value="{{ i.age }}" placeholder="Enter Age*" required="">
+                            </fieldset>
+                            </div>
+                              <div class="col-lg-12">
+                              <fieldset>
+                                <textarea name="address" rows="6" id="address" autocomplete="off"  placeholder="Enter Address*" required="">{{ i.address }}</textarea>
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                              <fieldset>
+                              <input name="email" type="text" id="email"  value="{{ i.email }}" autocomplete="off" pattern="[^ @]*@[^ @]*" placeholder="Enter Email Id*" required="">
+                            </fieldset>
+                            </div>
+                              <div class="col-md-12 col-sm-12">
+                              <fieldset>
+                                <select value="district" name="district" required="" id="district">
+                                    <option value="">Select District</option>
+                                    <option value="Kasaragod">Kasaragod</option>
+                                    <option value="Kannur">Kannur</option>
+                                    <option value="Wayanad">Wayanad</option>
+                                    <option value="Kozhikkode">Kozhikkode</option>
+                                    <option value="Malappuram">Malappuram</option>
+                                    <option value="Palakkad">Palakkad</option>
+                                    <option value="Thrissur">Thrissur</option>
+                                    <option value="Eranakulam">Eranakulam</option>
+                                    <option value="Idukki">Idukki</option>
+                                    <option value="Kottayam">Kottayam</option>
+                                    <option value="Pathanamthitta">Pathanamthitta</option>
+                                    <option value="Alappuzha">Alappuzha</option>
+                                    <option value="Kollam">Kollam</option>
+                                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                                </select>
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-12 col-sm-12">
+                              <fieldset>
+                                <input name="phone" type="text" id="phone" autocomplete="off" pattern="^\d{10}$" value="{{ i.phone }}" placeholder="Enter Phone*" required="">
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                              <fieldset>
+                                <textarea name="qualification" rows="6" id="qualification" autocomplete="off" placeholder="Enter Qualification*" required="">{{ i.qualification }}</textarea>
+                              </fieldset>
+                            </div>
+                              <div class="col-lg-12">
+                              <fieldset>
+                                <textarea name="experience" rows="6" id="experience" autocomplete="off" placeholder="Enter Experience*" required="">{{ i.experience }}</textarea>
+                              </fieldset>
+                            </div>
+                              {% for j in pas %}
+                               <div class="col-lg-12 col-sm-12">
+                              <fieldset>
+                                <input name="password" type="text" id="password" autocomplete="off" value="{{ j.password }}" placeholder="Enter Password*" required="">
+                              </fieldset>
+                            </div>
+                                  {% endfor %}
+                              <div class="col-lg-12 col-sm-12">
+                              <fieldset>Upload Image
+                                <input name="photo" type="file" id="photo"  placeholder="Enter Phone*" required="">
+                              </fieldset>
+                            </div>
+                              <div class="col-lg-12 col-sm-12">
+                              <fieldset>Upload ID Proof
+                                <input name="proof" type="file" id="proof" placeholder="Enter Phone*" required="">
+                              </fieldset>
+                            </div>
+                            {% endfor %}
+                            <div class="col-lg-12">
+                              <fieldset>
+{#                                <button type="submit" id="form-submit" class="main-button-icon">Make A Reservation</button>#}
+                                <input type="submit" id="form-submit" class="btn btn-primary" value="UPDATE">
+                              </fieldset>
+                            </div>
+                            {% if msg %}
+                                    <script>alert("{{ msg }}")</script>
+                                {% endif %}
+                          </div>
+                        </form>
+                    </div>
+                </div>
+
+        </div>
+    </section>
+    <!-- ***** Chefs Area Ends ***** -->
+
+    <!-- ***** Reservation Us Area Starts ***** -->
+
+    <!-- ***** Reservation Area Ends ***** -->
+
+
+    <!-- jQuery -->
+    <script src="/static/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="/static/assets/js/popper.js"></script>
+    <script src="/static/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="/static/assets/js/owl-carousel.js"></script>
+    <script src="/static/assets/js/accordions.js"></script>
+    <script src="/static/assets/js/datepicker.js"></script>
+    <script src="/static/assets/js/scrollreveal.min.js"></script>
+    <script src="/static/assets/js/waypoints.min.js"></script>
+    <script src="/static/assets/js/jquery.counterup.min.js"></script>
+    <script src="/static/assets/js/imgfix.min.js"></script>
+    <script src="/static/assets/js/slick.js"></script>
+    <script src="/static/assets/js/lightbox.js"></script>
+    <script src="/static/assets/js/isotope.js"></script>
+
+    <!-- Global Init -->
+    <script src="/static/assets/js/custom.js"></script>
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+            });
+        });
+
+    </script>
+  </body>
+</html>

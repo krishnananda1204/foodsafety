@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>FOOD SAFETY</title>
+<!--
+
+TemplateMo 558 Klassy Cafe
+
+https://templatemo.com/tm-558-klassy-cafe
+
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="/static/assets/css/templatemo-klassy-cafe.css">
+
+    <link rel="stylesheet" href="/static/assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="/static/assets/css/lightbox.css">
+
+    </head>
+
+    <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <ul class="nav">
+
+                            <li class="scroll-to-section"><a href="#search">Search Restaurant</a></li>
+                            <li class="scroll-to-section"><a href="/public_user/user_home/#menu">Back</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** About Area Starts ***** -->
+
+    <!-- ***** About Area Ends ***** -->
+
+    <!-- ***** Menu Area Starts ***** -->
+
+
+    <!-- ***** Chefs Area Starts ***** -->
+    <section class="section" id="query">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 ">
+                    <div class="section-heading">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h2>All Restaurants</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item-carousel ">
+            <div class="col-lg-6 align-content-center">
+                <div class="align-items-center">
+                    <div class="container">
+                    {% if data %}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>NAME</th>
+                            <th>ADDRESS</th>
+                            <th>EMAIL</th>
+                            <th>PHONE</th>
+                            <th>OWNER'S NAME</th>
+                            <th>OWNER'S CONTACT</th>
+                            <th></th>
+                        </tr>
+                        {% for i in data %}
+                        <tr>
+                            <td><a href="{% url 'restaurant_details' idd=i.restaurant_id %}">{{ i.name }}</a> </td>
+                            <td>{{ i.address }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>{{ i.owner_name }}</td>
+                            <td>{{ i.owner_contact }}</td>
+                            <td><a href="{% url 'add_rating' idd=i.restaurant_id %}" class="col-md-12 btn btn-primary">Rating & Comment</a> </td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                        {% else %}
+                        <h3 align="center">No Data</h3>
+                        {% endif %}
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+    </section>
+
+     <section class="section" id="search">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 ">
+                    <div class="section-heading">
+                        <br>
+                        <h2>Search Restaurants</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item-carousel ">
+            <div class="col-lg-6 align-content-center">
+                <div class="align-items-center">
+                                        <form method="post">
+
+                    <div class="container">
+                    <div class="col-lg-10">
+                            {% csrf_token %}
+                    <div class="contact-form">
+   <div class="col-lg-12">
+      <fieldset>
+        <input name="keyword" type="text" autocomplete="off" required="" placeholder="Enter restaurant name*" >
+      </fieldset>
+    </div>
+
+    <div class="col-lg-12">
+          <fieldset>
+            <input type="submit"  class="btn btn-danger" VALUE="SEARCH" name="search">
+          </fieldset>
+        </div>
+    </div>
+     </div>
+                    {% if result %}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>NAME</th>
+                            <th>ADDRESS</th>
+                            <th>EMAIL</th>
+                            <th>PHONE</th>
+                            <th>OWNER'S NAME</th>
+                            <th>OWNER'S CONTACT</th>
+                            <th></th>
+                        </tr>
+                        {% for i in result %}
+                        <tr>
+                            <td><a href="{% url 'restaurant_details' idd=i.restaurant_id %}">{{ i.name }}</a> </td>
+                            <td>{{ i.address }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>{{ i.owner_name }}</td>
+                            <td>{{ i.owner_contact }}</td>
+                            <td><a href="{% url 'add_rating' idd=i.restaurant_id %}" class="col-md-12 btn btn-primary">Rating & Comment</a> </td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+{#                        {% else %}#}
+{#                        <h3 align="center">No Data</h3>#}
+                        {% endif %}
+                        </div>
+                                        </form>
+                </div>
+
+            </div>
+        </div>
+            <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+    <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+    </section>
+    <!-- ***** Chefs Area Ends ***** -->
+
+    <!-- ***** Reservation Us Area Starts ***** -->
+
+
+    <!-- ***** Menu Area Starts ***** -->
+{#    <section class="section" id="offers">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-4 offset-lg-4 text-center">#}
+{#                    <div class="section-heading">#}
+{#                        <h6>Klassy Week</h6>#}
+{#                        <h2>This Week’s Special Meal Offers</h2>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12">#}
+{#                    <div class="row" id="tabs">#}
+{#                        <div class="col-lg-12">#}
+{#                            <div class="heading-tabs">#}
+{#                                <div class="row">#}
+{#                                    <div class="col-lg-6 offset-lg-3">#}
+{#                                        <ul>#}
+{#                                          <li><a href='#tabs-1'><img src="/static/assets/images/tab-icon-01.png" alt="">Breakfast</a></li>#}
+{#                                          <li><a href='#tabs-2'><img src="/static/assets/images/tab-icon-02.png" alt="">Lunch</a></li>#}
+{#                                          <li><a href='#tabs-3'><img src="/static/assets/images/tab-icon-03.png" alt="">Dinner</a></li>#}
+{#                                        </ul>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col-lg-12">#}
+{#                            <section class='tabs-content'>#}
+{#                                <article id='tabs-1'>#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-lg-6">#}
+{#                                            <div class="row">#}
+{#                                                <div class="left-list">#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-01.png" alt="">#}
+{#                                                            <h4>Fresh Chicken Salad</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$10.50</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-02.png" alt="">#}
+{#                                                            <h4>Orange Juice</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$8.50</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-03.png" alt="">#}
+{#                                                            <h4>Fruit Salad</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$9.90</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-lg-6">#}
+{#                                            <div class="row">#}
+{#                                                <div class="right-list">#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-04.png" alt="">#}
+{#                                                            <h4>Eggs Omelette</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$6.50</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-05.png" alt="">#}
+{#                                                            <h4>Dollma Pire</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$5.00</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-06.png" alt="">#}
+{#                                                            <h4>Omelette & Cheese</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$4.10</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </article>#}
+{#                                <article id='tabs-2'>#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-lg-6">#}
+{#                                            <div class="row">#}
+{#                                                <div class="left-list">#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-04.png" alt="">#}
+{#                                                            <h4>Eggs Omelette</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$14</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-05.png" alt="">#}
+{#                                                            <h4>Dollma Pire</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$18</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-06.png" alt="">#}
+{#                                                            <h4>Omelette & Cheese</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$22</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-lg-6">#}
+{#                                            <div class="row">#}
+{#                                                <div class="right-list">#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-01.png" alt="">#}
+{#                                                            <h4>Fresh Chicken Salad</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$10</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-02.png" alt="">#}
+{#                                                            <h4>Orange Juice</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$20</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-03.png" alt="">#}
+{#                                                            <h4>Fruit Salad</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$30</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </article>#}
+{#                                <article id='tabs-3'>#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-lg-6">#}
+{#                                            <div class="row">#}
+{#                                                <div class="left-list">#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-05.png" alt="">#}
+{#                                                            <h4>Eggs Omelette</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$14</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-03.png" alt="">#}
+{#                                                            <h4>Orange Juice</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$18</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-02.png" alt="">#}
+{#                                                            <h4>Fruit Salad</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$10</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="col-lg-6">#}
+{#                                            <div class="row">#}
+{#                                                <div class="right-list">#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-06.png" alt="">#}
+{#                                                            <h4>Fresh Chicken Salad</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$8.50</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-01.png" alt="">#}
+{#                                                            <h4>Dollma Pire</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$9</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="/static/assets/images/tab-item-04.png" alt="">#}
+{#                                                            <h4>Omelette & Cheese</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$11</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </article>#}
+{#                            </section>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+    <!-- ***** Chefs Area Ends ***** -->
+
+    <!-- ***** Footer Start ***** -->
+{#    <footer>#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-4 col-xs-12">#}
+{#                    <div class="right-text-content">#}
+{#                            <ul class="social-icons">#}
+{#                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+{#                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+{#                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+{#                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>#}
+{#                            </ul>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4">#}
+{#                    <div class="logo">#}
+{#                        <a href="index.html"><img src="/static/assets/images/white-logo.png" alt=""></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4 col-xs-12">#}
+{#                    <div class="left-text-content">#}
+{#                        <p>© Copyright Klassy Cafe Co.#}
+{##}
+{#                        <br>Design: TemplateMo</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </footer>#}
+
+    <!-- jQuery -->
+    <script src="/static/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="/static/assets/js/popper.js"></script>
+    <script src="/static/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="/static/assets/js/owl-carousel.js"></script>
+    <script src="/static/assets/js/accordions.js"></script>
+    <script src="/static/assets/js/datepicker.js"></script>
+    <script src="/static/assets/js/scrollreveal.min.js"></script>
+    <script src="/static/assets/js/waypoints.min.js"></script>
+    <script src="/static/assets/js/jquery.counterup.min.js"></script>
+    <script src="/static/assets/js/imgfix.min.js"></script>
+    <script src="/static/assets/js/slick.js"></script>
+    <script src="/static/assets/js/lightbox.js"></script>
+    <script src="/static/assets/js/isotope.js"></script>
+
+    <!-- Global Init -->
+    <script src="/static/assets/js/custom.js"></script>
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){gg
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+            });
+        });
+
+    </script>
+  </body>
+</html>

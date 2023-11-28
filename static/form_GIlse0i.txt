@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <title>Form</title>
+</head>
+<body>
+<h1 align="center" style="color:DarkRed;">FILL UP THE FORM</h1><br>
+<center>
+    <form method="post" action="fillform">
+        {% csrf_token %}
+        Name :&nbsp;&nbsp;<input type="text" name="name" placeholder="Enter your name"><br><br>
+        Date of Birth :&nbsp;&nbsp;<input type="date" name="dob" placeholder="Enter your date of birth">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+        Age :&nbsp;&nbsp;<input type="text" name="age" placeholder="Enter your age">
+        &nbsp;<br><br>
+        Gender :&nbsp;&nbsp;<input type="radio" name="gender" value="male">Male&nbsp;&nbsp;
+               <input type="radio" name="gender" value="female">Female
+         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br><br>
+        Phone Number :&nbsp;&nbsp;<input type="text" name="phone" placeholder="Enter your phone number">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+        Email Id :&nbsp;&nbsp;<input type="email" name="email" placeholder="Enter your email id">&nbsp;&nbsp;<br><br>
+        Address :&nbsp;&nbsp;<textarea name="address"></textarea>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+        <label>Department :&nbsp;</label>
+            <select name="dept">
+                <option>Computer Science</option>
+                <option>Science</option>
+                <option>Electronics</option>
+                <option>Commerce</option>
+                <option>Humanities</option>
+			</select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>Courses :&nbsp;</label>
+            <select name="course">
+                <option>B.Tech in Computer Science</option>
+                <option>B.Tech in Information Technnology</option>
+                <option>Bachelor of Computer Application(BCA)</option>
+                <option>B.Sc Computer Science</option>
+                <option>B.Sc Agriculture</option>
+                <option>B.Sc Physics</option>
+                <option>B.Sc Chemistry</option>
+                <option>B.Sc Botany</option>
+                <option>B.Tech in Electronics Engineering</option>
+                <option>B.Sc Electronics</option>
+                <option>B.Sc (Hons) in Electronics</option>
+                <option>Electronic & Automation Engineering</option>
+                <option>Bachelor of Commerce(B.Com)</option>
+                <option>Bachelor of Economics(BE)</option>
+                <option>Bachelor of Accounting & Finance(BAF)</option>
+                <option>Bachelor of Business Administration(BBA)</option>
+                <option>B.A English</option>
+                <option>B.A Sociology</option>
+                <option>B.A Economics</option>
+                <option>B.A History</option>
+			</select><br><br>
+		<label>Purpose :&nbsp;</label>
+			<select name="purpose">
+				<option>Enquiry</option>
+                <option>Place order</option>
+                <option>Return</option>
+			</select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+		Materials provide : &nbsp;
+		<input type="checkbox" name="materials" value="notebook">&nbsp;Notebook
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		<input type="checkbox" name="materials" value="pen">&nbsp;Pen
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		<input type="checkbox" name="materials" value="pencil">&nbsp;Pencil
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		<input type="checkbox" name="materials" value="exam paper">&nbsp;Exam Paper&nbsp;<br><br>
+        <button><a href="{% url 'college_app:msg' %}">SUBMIT</a></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <button><a href="{% url 'college_app:logout' %}">LOGOUT</a></button><br><br>
+    </form>
+</center>
+</body>
+</html>

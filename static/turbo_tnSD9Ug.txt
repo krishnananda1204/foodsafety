@@ -1,0 +1,98 @@
+Question
+You will be given an input string and you are needed to complete the function turbo_sort so that it returns an output string based on the conditions mentioned below:
+
+1 - Select the largest character from the input string and add it to the output.
+
+2 - Select the next largest character which is greater than the previously selected one and append it to the output.
+
+3 - Repeat the previous step.
+
+4 - Repeat the process (from 1 to 3) until you have finished iterating over all the input characters.
+
+Example
+1
+
+input_str = 'turbolab'
+output = 'utrolbba'
+Explanation
+In step 1, we select the largest character which is 'u'.
+In step 2 and 3, we select 't' and 'r' respectively as they are the next largest characters.
+In step 4, we repeat the process and select characters 'o', 'l' and 'b' respectively. We do the same to get characters 'b' and 'a'.
+As we have iterated over all the characters, we will stop the selection process.
+The final output will be 'utrolbba'.
+2
+
+input_str = 'haihai'
+output = 'ihaiha'
+Explanation
+In step 1, we select the largest character which is 'i'.
+In step 2 and 3 we select 'h' and 'a' respectively as they are the next largest characters.
+In step 4, we start repeating the process.
+We select 'i', 'h' and 'a' in steps 5, 6 and 7 as they are the next largest elements.
+3
+
+input_str = 'hihi'
+output = 'ihih'
+Explanation
+In step 1, we select the largest character which is 'i'.
+In step 2, we select the second largest element which is 'h'. (We do not select 'i' again since we are looking for the next largest character).
+We repeat the steps until we have iterated through all the characters in the input.
+4
+
+input_str = 'lllll'
+output = 'lllll'
+Explanation
+We select the largest character and add to output in step 1.
+Since all the characters are the same and there is no largest character to select, we will repeat the first step until we have iterated through all the characters in the input.
+5
+
+input_str = 'hiih'
+output = 'ihih'
+Assumptions
+The input string will always consist of lower case alphabets and will not contain special characters or numerics.
+
+
+
+
+
+*************************************************************************************************************************************************************************************************
+
+
+
+
+
+
+Question
+Given three strings a, b, c consist of lowercase letters. You have to choose any character from c, remove it from c and insert it into string a (you can insert character anywhere you want: in the beginning of a, in the end or between).
+
+You have to perform several maybe zero operations so that a becomes equal to b. If possible return True else False.
+
+Example 1:
+Input:
+a=ab
+b=acxb
+c=cax
+Output:
+True
+Explanation:
+Take first character from c: c; insert it in a between a and b; The new a will be acb
+
+Take second character from c: x; insert it in between c and b; The new a will be acxb
+
+Example 2:
+Input:
+a=ab
+b=baaa
+c=aaaa
+Output:
+False  
+
+
+
+
+
+
+*********************************************************************************************************************************
+
+
+
